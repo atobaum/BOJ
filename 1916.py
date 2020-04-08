@@ -1,7 +1,8 @@
 from queue import PriorityQueue
+import sys
 
 def parse():
-    return list(map(int, input().split()))
+    return list(map(int,sys.stdin.readline().split()))
 
 def dji(adj, s, e):
     q = PriorityQueue()
