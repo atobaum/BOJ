@@ -11,4 +11,7 @@ for filename in $test_files; do
 	ret=`python3 $1.py < $filename`
 	echo "Test $filename:"
 	echo "$ret"
+	echo "Expected:"
+	echo `tac $filename | awk '/^$/{exit}1' | tac`
+	printf "\n\n"
 done
