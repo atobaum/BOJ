@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+/*
+ 풀이1
 // 0의 개수
 int number_of_zero(int num){
 	// current power
@@ -39,4 +41,42 @@ int main(){
 	printf("\n");
 	return 0;
 }
+*/
 
+// 풀이2
+void solve(int num, int *answer){
+	int p = 1;
+	do{
+		int quotient = num/(p*10);
+		int digit = (num/p)%10;
+		// for 0
+		answer[0] += quotient * p;
+		if(p != 1 && digit == 0)
+			answer[0] -= p - 1 - num % p;
+
+		// other digits
+		for(int n = 1; n < 10; ++n){
+			answer[n] += (quotient+1) * p;
+			if(p == 1 && num < n)
+				answer[n] -= 1;
+			else if(digit < n)
+				answer[n] -= p;
+			else if (digit == n)
+				answer[n] -= p - 1 - num % p;
+		}
+
+		p *= 10;
+	} while(num / p != 0);
+}
+
+int main(){
+	int n;
+	int answer[10] = {0};
+	scanf("%d", &n);
+
+	solve(n, answer);
+	for(int i = 0; i < 10; ++i)
+		printf("%d ", answer[i]);
+	printf("\n");
+	return 0;
+}
