@@ -1,17 +1,11 @@
-#!/bin/bash
-
-if [ $# -lt 1 ]; then
-	echo "Usage: $0 (problem number)"
+FILENAME="test.txt"
+if [ -n $1 ]; then
+	FILENAME=$1
 fi
-
-test_files=`ls | grep "^$1\.test"`
-i=0
-for filename in $test_files; do
-	i=i+1
-	ret=`python3 $1.py < $filename`
-	echo "Test $filename:"
-	echo "$ret"
-	echo "Expected:"
-	echo `tac $filename | awk '/^$/{exit}1' | tac`
-	printf "\n\n"
-done
+RESULT=`awk 'BEGIN {RS=""} NR==1{print $0}' "$FILENAME" | ./a.out`
+ANSWER=`awk 'BEGIN {RS=""} NR==2{print $0}' "$FILENAME"`
+echo "result:"
+echo "$RESULT"
+echo ""
+echo "answer:"
+echo "$ANSWER"
