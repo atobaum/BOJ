@@ -1,52 +1,49 @@
-#include <iostream>
 #include <algorithm>
-#include <vector>
+#include <iostream>
+#include <set>
 #include <utility>
+#include <vector>
 
 using namespace std;
 
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
 
-int main(){
-	int N, K, M, V, C;
-	vector<pair<int, int> > gems;
-	vector<int> packs;
+  int N, K, M, V, C;
+  vector<pair<int, int> > gems;
+  multiset<int> packs;
 
-	cin >> N >> K;
-	for(int i = 0; i < N; ++i){
-		cin >> M >> V;
-		gems.push_back(make_pair(V, M));
-	}
+  cin >> N >> K;
+  for (int i = 0; i < N; ++i) {
+    cin >> M >> V;
+    gems.push_back(make_pair(V, M));
+  }
 
+  for (int i = 0; i < K; ++i) {
+    cin >> C;
+    packs.insert(C);
+  }
 
-	for(int i = 0; i < K; ++i){
-		cin >> C;
-		packs.push_back(C);
-	}
+  long long result = 0;
 
-	int result = 0;
+  sort(gems.begin(), gems.end(), greater<pair<int, int> >());
 
-	sort(gems.begin(), gems.end(), greater<pair<int, int> >());
-	sort(packs.begin(), packs.end());
+  for (int i = 0; i < N; ++i) {
+    pair<int, int> gem = gems[i];
 
-	for(int i = 0; i < N; ++i){
-		pair<int, int> gem = gems[i];
-		
-		// lowerbound pack 찾기
-		// binary search
-		vector<int>::iterator low = packs.begin();
-		vector<int>::iterator high = packs.end();
+    // 보석이 들어갈 수 있는 가방 찾기
+    // gem.second 보다 큰 것 중 제일 작은 것
+    multiset<int>::iterator iter = packs.upper_bound(gem.second - 1);
+    if (iter != packs.end()) {
+      result += gem.first;
+      packs.erase(iter);
+    }
 
-		for(vector<int>::iterator it = packs.begin(); it != packs.end(); it++){
-			if(*it >= gem.second){
-				result += gem.first;
-				packs.erase(it);
-				break;
-			}
-		}
+    if (packs.empty())
+      break;
+  }
 
-		if(packs.empty()) break;
-	}
-
-	cout << result << endl;
-	return 0;
+  cout << result << endl;
+  return 0;
 }
