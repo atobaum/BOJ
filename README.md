@@ -1,8 +1,8 @@
 # BOJ
 
-Baekjoon online judge(https://www.acmicpc.net/) problem solving codes
+[백준](https://www.acmicpc.net/) 문제를 풀어보자
 
-문제를 풀어보자
+[![solved.ac tier](http://mazassumnida.wtf/api/generate_badge?boj=atobaum)](https://solved.ac/atobaum)
 
 ## Commit convection
 
