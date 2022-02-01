@@ -1,17 +1,10 @@
-#include <algorithm> //sort
-#include <climits>
-#include <cstring>    //memset
-#include <functional> //greater
-#include <iostream>
-#include <queue>
-#include <utility> //pair
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 typedef long long ll;
 typedef pair<int, int> pii;
 
-#define reap(i, a, b) for (int i = a; i < b; i++)
+#define rep(i, a, b) for (int i = a; i < b; i++)
 #define in1(a) cin >> a;
 #define in2(a, b) cin >> a >> b;
 #define in3(a, b, c) cin >> a >> b >> c;
@@ -22,8 +15,7 @@ typedef pair<int, int> pii;
 #define out4(a, b, c, d) cout << a << " " << b << " " << c << " " << d << endl;
 
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(NULL);
+  ios::sync_with_stdio(false); cin.tie(NULL);
 
   return 0;
 }
