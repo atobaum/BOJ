@@ -3,7 +3,9 @@ using namespace std;
 
 typedef long long ll;
 typedef pair<int, int> pii;
-#define mp(a, b) make_pair(a, b);
+#define mp(a, b) make_pair(a, b)
+#define X first
+#define Y second
 
 #define rep(i, a, b) for (int i = a; i < b; i++)
 #define in1(a) cin >> a;
