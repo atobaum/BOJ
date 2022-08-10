@@ -7,7 +7,7 @@ typedef pair<int, int> pii;
 #define X first
 #define Y second
 
-#define rep(i, a, b) for (int i = a; i < b; i++)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 #define in1(a) cin >> a;
 #define in2(a, b) cin >> a >> b;
 #define in3(a, b, c) cin >> a >> b >> c;
