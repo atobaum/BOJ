@@ -6,6 +6,10 @@ typedef long long ll;
 
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
+/*
+ * 정렬했을 때 앞, 뒤로 가장 가까운 숫자 두개의 최대 depth + 1
+ */
+
 int N;
 map<int, int> m;
 
